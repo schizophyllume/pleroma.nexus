@@ -1,1 +1,559 @@
+<!-- ====================================================
+   Welcome to the blog template
+   ====================================================
 
+   I've done my best to make it as easily editable
+   as possible.
+
+   Most things like colours and fonts are in easy to
+   edit variables.
+
+   This is just a template! You are free to modify
+   whatever you want here and make it your own, not
+   just the variables, if you would like.
+
+   Have fun!
+   ==================================================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Wings</title>
+<style>
+  /* ============================================================
+     HTML VALUES
+     EDIT THESE VALUES - all colours and fonts are set here
+     ============================================================
+
+     COLOURS: use a name (e.g. black, white, hotpink) or a
+     hex code (e.g. #ff0000). Pick one here: https://www.color-hex.com
+
+     FONTS: use any font name from https://fonts.google.com
+     ============================================================ */
+
+  :root {
+    --bg-color:           #000000;   /* page background */
+    --text-color:         #c0a0da;   /* body text and post content */
+    --filename-color:     #a0a0a0;   /* post button text colour */
+    --filename-hover-bg:  #000000;   /* background when hovering a post button */
+    --filename-hover-fg:  #ffffff;   /* text colour when hovering a post button */
+    --link-color:         #ff00f2;   /* links inside posts */
+    --link-visited-color: #62007a;   /* visited links */
+    --link-hover-bg:      #eeff00;   /* background when hovering a link */
+    --link-hover-fg:      #ffffff;   /* text colour when hovering a link */
+    --hr-color:           #000000;   /* horizontal rule colour */
+    --separator-color:    #555555;   /* the line shown above each post */
+    --error-color:        #ff0000;   /* error messages */
+    --btn-back-color:     #a0a0a0;   /* "back to list" button text colour */
+    --btn-back-hover-bg:  #000000;   /* "back to list" button hover background */
+    --btn-back-hover-fg:  #ffffff;   /* "back to list" button hover text */
+    --yt-border:          #cccccc;   /* border around embedded YouTube videos */
+    --font-family:        "Arial", Arial, monospace;
+    --font-size:          14px;
+
+    /* Content warning overlay colours */
+    --cw-bg:              #000000;   /* overlay background */
+    --cw-border:          #ffffff;   /* overlay border */
+    --cw-title-color:     #ff0000;   /* warning title colour */
+    --cw-text-color:      #ffffff;   /* warning body text colour */
+    --cw-btn-color:       #ffffff;   /* button text and border colour */
+    --cw-btn-hover-bg:    #ffffff;   /* button background on hover */
+    --cw-btn-hover-fg:    #000000;   /* button text on hover */
+    --cw-overlay-bg:      rgb(0,0,0); /* the background behind the warning box */
+  }
+
+  /* ============================================================
+     Do not edit below this line
+     ============================================================ */
+
+  body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #wrap {
+    padding: 20px;
+    padding-bottom: 48px;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  a { color: var(--link-color); }
+  a:visited { color: var(--link-visited-color); }
+  a:hover { color: var(--link-hover-fg); background: var(--link-hover-bg); }
+
+  hr { border: none; border-top: 1px solid var(--hr-color); margin: 16px 0; }
+
+  /* About sections */
+  .about-section {
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+
+  .about-section-heading {
+    margin: 0 0 8px 0;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+
+  .about-section-body {
+    color: var(--text-color);
+  }
+
+  .about-section-body p {
+    margin: 0 0 8px 0;
+  }
+
+  /* Post list grid */
+  .ls-grid {
+    display: grid;
+    gap: 2px 12px;
+    margin: 4px 0 8px 0;
+  }
+
+  .file-entry {
+    cursor: pointer;
+    display: inline-block;
+    color: var(--filename-color);
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    padding: 2px 0;
+    text-align: left;
+  }
+  .file-entry:hover {
+    color: var(--filename-hover-fg);
+    background: var(--filename-hover-bg);
+  }
+  .file-entry.visited { opacity: 0.5; }
+
+  /* Post content */
+  .post-content { white-space: normal; line-height: 1.6; }
+
+  .post-separator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: var(--separator-color);
+    font-size: 0.9em;
+  }
+
+  .post-separator::before,
+  .post-separator::after {
+    content: '';
+    flex: 1;
+    border-top: 1px solid var(--separator-color);
+  }
+
+  .post-title {
+    margin-bottom: 16px;
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  .yt-embed { margin: 8px 0; display: block; }
+  .yt-embed iframe {
+    border: 1px solid var(--yt-border);
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Back button */
+  #back-btn {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    color: var(--btn-back-color);
+    padding: 0;
+    margin-bottom: 16px;
+  }
+  #back-btn:hover {
+    color: var(--btn-back-hover-fg);
+    background: var(--btn-back-hover-bg);
+  }
+
+  /* Content warning overlay */
+  #cw-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--cw-overlay-bg);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  #cw-box {
+    border: 1px solid var(--cw-border);
+    max-width: 500px;
+    width: 100%;
+    padding: 28px 32px;
+    background: var(--cw-bg);
+  }
+
+  #cw-box h2 {
+    color: var(--cw-title-color);
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0 0 16px;
+  }
+
+  #cw-box p {
+    color: var(--cw-text-color);
+    line-height: 1.7;
+    margin: 0 0 20px;
+  }
+
+  #cw-box a { color: var(--cw-text-color); }
+
+  #cw-ok {
+    background: none;
+    border: 1px solid var(--cw-btn-color);
+    color: var(--cw-btn-color);
+    font-family: var(--font-family);
+    font-size: 0.9em;
+    padding: 8px 24px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  #cw-ok:hover {
+    background: var(--cw-btn-hover-bg);
+    color: var(--cw-btn-hover-fg);
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+</head>
+<body>
+
+<div id="cw-overlay" style="display:none;">
+  <div id="cw-box">
+    <h2 id="cw-title"></h2>
+    <div id="cw-body"></div>
+    <button id="cw-ok">[ continue ]</button>
+  </div>
+</div>
+
+<div id="wrap">
+  <div id="about-sections"></div>
+  <button id="back-btn"></button>
+  <div id="content"></div>
+</div>
+
+<script>
+/* ============================================================
+   SCRIPT VALUES
+   EDIT THESE VALUES - everything you need to change is here
+   ============================================================
+
+   COLOURS: use a name (e.g. black, white, hotpink) or a
+   hex code (e.g. #ff0000). Pick one here: https://www.color-hex.com
+   ============================================================ */
+
+
+// Your GitLab or GitHub raw URL
+// Format GitLab: https://gitlab.com/YOUR_USERNAME/YOUR_REPO/-/raw/main/posts.json
+// Format GitHub: https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/posts.json
+const POSTS_URL = 'URL GOES HERE';
+
+// Page title (shown in the browser tab)
+const PAGE_TITLE = 'blog';
+
+// The label on the back button shown when reading a post
+const BACK_BUTTON_TEXT = '← back to posts';
+
+// How many columns to show in the post list.
+// Use a number for a fixed layout (e.g. 1, 2, 3, 4)
+// or 'auto' to let the page decide based on screen width
+const GRID_COLUMNS = 'auto';
+
+// Alignment of the post list.
+// Options: 'left'  'center'  'right'
+const GRID_ALIGN = 'left';
+
+/* ============================================================
+   ABOUT SECTION
+   EDIT THESE VALUES - everything you need to change is here
+   ============================================================
+
+   You can have as many or as few about sections as you like.
+   Add or remove blocks between the [ ] to add or remove sections.
+   Set to an empty array to show no about sections: []
+
+   Each section has these fields:
+   heading  - the heading shown above the section (set to '' to hide it)
+   text     - your text, supports markdown and \n line breaks
+   align    - text alignment: 'left'  'center'  'right'
+   layout   - 'single'    one block of text
+              'two-col'   two side-by-side columns
+              'three-col' three side-by-side columns
+              For multi-column layouts, separate each column with ---
+              e.g. 'Left column\n---\nRight column'
+   ============================================================ */
+const ABOUT_SECTIONS = [
+  {
+    heading: '**About Me**',
+    text:    'Waiting for a new world of permeable boundaries and endless impermanence',
+    align:   'left',
+    layout:  'single',
+  },
+  {
+    heading: '**WIP**',
+    text:    'For the time being, I must learn, grow, and gather myself. I might put up a few small posts and updates here and there, but I\'ve yet to begin unfurling my wings. I will fly, soon enough.',
+    align:   'left',
+    layout:  'two-col',
+  },
+  {
+    text:    '*Our rigid boundaries*\n\n*The towers that they\'ll build*\n\n*We\'ll all fall upwards, soon enough*',
+    align:   'center',
+    layout:  'single',
+  },
+];
+
+/* ============================================================
+   CONTENT WARNING FUNCTION
+   EDIT THESE VALUES - everything you need to change is here
+   ============================================================
+   Set to true to show a content warning before the page loads,
+   or false to skip it entirely.
+   ============================================================ */
+const CONTENT_WARNING = true;
+
+// The heading shown at the top of the warning box
+const CW_TITLE = 'Content warning';
+
+// The warning text - write whatever you need here.
+// You can split it into paragraphs by adding more lines like the ones below.
+const CW_TEXT = [
+  'This is the first line of text.',
+  'This is the second line of text. If you only want one, delete this one, or feel free to add more if you want more than two.',
+];
+
+// The URL of the home/index page - only edit this if you want to send users somewhere
+// other than back to the home page, when they hit the return button.
+const CW_HOME_URL = 'index.html';
+
+// The text of the back link shown in the warning (the URL is set by CW_HOME_URL above)
+const CW_HOME_TEXT = 'Leave';
+
+// The label on the button to proceed past the warning
+const CW_BUTTON_TEXT = 'Continue';
+
+
+// ============================================================
+// Do not edit below this line
+// ============================================================
+
+document.title = PAGE_TITLE;
+
+const contentEl      = document.getElementById('content');
+const backBtn        = document.getElementById('back-btn');
+const aboutSectionsEl = document.getElementById('about-sections');
+let posts = [];
+const visited = new Set();
+
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function extractYtId(url) {
+  try {
+    const u = new URL(url);
+    if (u.hostname.includes('youtu.be')) return u.pathname.slice(1).split('?')[0];
+    if (u.hostname.includes('youtube.com')) return u.searchParams.get('v');
+  } catch(e) {}
+  return null;
+}
+
+// Converts markdown text into HTML, turning YouTube URLs into embeds
+// Any YouTube URL becomes an embedded player
+// Everything else is rendered as standard markdown
+function renderContent(text) {
+  const ytPlaceholders = [];
+  text = text.replace(/(https?:\/\/[^\s]+)/g, function(url) {
+    const ytId = extractYtId(url);
+    if (ytId) {
+      const placeholder = '%%YT' + ytPlaceholders.length + '%%';
+      ytPlaceholders.push('<span class="yt-embed"><iframe width="320" height="180" src="https://www.youtube.com/embed/' + ytId + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe></span>');
+      return placeholder;
+    }
+    return url;
+  });
+  let html = marked.parse(text, { breaks: true });
+  ytPlaceholders.forEach(function(embed, i) {
+    html = html.replace('%%YT' + i + '%%', embed);
+  });
+  return html;
+}
+
+// Render about sections
+function renderAboutSections() {
+  aboutSectionsEl.innerHTML = '';
+  ABOUT_SECTIONS.forEach(function(section) {
+    const wrap = document.createElement('div');
+    wrap.className = 'about-section';
+    wrap.style.textAlign = section.align || 'left';
+
+    if (section.heading) {
+      const heading = document.createElement('div');
+      heading.className = 'about-section-heading';
+      heading.innerHTML = marked.parse(section.heading, { breaks: true });
+      wrap.appendChild(heading);
+    }
+
+    const body = document.createElement('div');
+    body.className = 'about-section-body';
+
+    if (!section.layout || section.layout === 'single') {
+      body.innerHTML = renderContent(section.text || '');
+    } else {
+      const colCount = section.layout === 'three-col' ? 3 : 2;
+      const cols = (section.text || '').split('---');
+      body.style.display = 'grid';
+      body.style.gridTemplateColumns = 'repeat(' + colCount + ', 1fr)';
+      body.style.gap = '0 24px';
+      cols.forEach(function(col) {
+        const div = document.createElement('div');
+        div.innerHTML = renderContent(col.trim());
+        body.appendChild(div);
+      });
+    }
+
+    wrap.appendChild(body);
+
+    const rule = document.createElement('hr');
+    wrap.appendChild(rule);
+
+    aboutSectionsEl.appendChild(wrap);
+  });
+}
+
+// Render post list
+function showList() {
+  backBtn.style.display = 'none';
+  aboutSectionsEl.style.display = 'block';
+  contentEl.innerHTML = '';
+
+  const grid = document.createElement('div');
+  grid.className = 'ls-grid';
+  grid.style.justifyItems = GRID_ALIGN === 'center' ? 'center' : GRID_ALIGN === 'right' ? 'end' : 'start';
+  grid.style.textAlign = GRID_ALIGN;
+  if (GRID_COLUMNS === 'auto') {
+    grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(180px, 1fr))';
+  } else {
+    grid.style.gridTemplateColumns = 'repeat(' + GRID_COLUMNS + ', 1fr)';
+  }
+
+  posts.forEach(p => {
+    const btn = document.createElement('button');
+    btn.className = 'file-entry' + (visited.has(p.date) ? ' visited' : '');
+    btn.dataset.date = p.date;
+    // Show title if the post has one, otherwise fall back to the date
+    btn.textContent = p.title || p.date;
+    btn.addEventListener('click', () => showPost(p.date));
+    grid.appendChild(btn);
+  });
+
+  contentEl.appendChild(grid);
+}
+
+// Render a single post
+function showPost(date) {
+  const post = posts.find(p => p.date === date);
+  if (!post) return;
+
+  visited.add(date);
+  contentEl.innerHTML = '';
+
+  const sep = document.createElement('div');
+  sep.className = 'post-separator';
+  sep.textContent = post.date;
+  contentEl.appendChild(sep);
+
+  // Show the title below the separator if the post has one
+  if (post.title) {
+    const titleEl = document.createElement('div');
+    titleEl.className = 'post-title';
+    titleEl.textContent = post.title;
+    contentEl.appendChild(titleEl);
+  }
+
+  const body = document.createElement('div');
+  body.className = 'post-content';
+  body.innerHTML = renderContent(post.content);
+  contentEl.appendChild(body);
+
+  backBtn.style.display = 'inline-block';
+  aboutSectionsEl.style.display = 'none';
+  window.scrollTo(0, 0);
+}
+
+backBtn.textContent = BACK_BUTTON_TEXT;
+backBtn.addEventListener('click', showList);
+
+// Content warning
+function showContentWarning() {
+  return new Promise(resolve => {
+    const overlay = document.getElementById('cw-overlay');
+    document.getElementById('cw-title').textContent = CW_TITLE;
+
+    const body = document.getElementById('cw-body');
+    CW_TEXT.forEach(line => {
+      const p = document.createElement('p');
+      p.textContent = line;
+      body.appendChild(p);
+    });
+    const backLink = document.createElement('p');
+    backLink.innerHTML = '<a href="' + CW_HOME_URL + '">' + CW_HOME_TEXT + '</a>';
+    body.appendChild(backLink);
+
+    document.getElementById('cw-ok').textContent = CW_BUTTON_TEXT;
+    overlay.style.display = 'flex';
+
+    document.getElementById('cw-ok').addEventListener('click', () => {
+      overlay.style.display = 'none';
+      resolve();
+    });
+  });
+}
+
+// Boot
+async function init() {
+  if (CONTENT_WARNING) {
+    await showContentWarning();
+  }
+
+  renderAboutSections();
+
+  try {
+    const res = await fetch(POSTS_URL + '?t=' + Date.now());
+    posts = await res.json();
+  } catch(e) {
+    const err = document.createElement('div');
+    err.style.color = cssVar('--error-color');
+    err.textContent = 'error: could not fetch posts.json -- check POSTS_URL in the script';
+    contentEl.appendChild(err);
+    return;
+  }
+
+  showList();
+}
+
+init();
+</script>
