@@ -1,13 +1,4 @@
-/* 
-Instead of hitting enter for a new line, just type \n. Youtube links also embed if you want to add music you're listening to and such.
-you can also use markdown to bold stuff or use headers, like on discord. to learn about markdown check out https://www.markdownguide.org/
-json files don't allow comments for whatever stupid reason, so make sure to delete these comments before committing this to your repo or it wont work properly
-*/
-
 [
-    {"date": "this is the title of my second post",
-     "content": "wowie! to make a third post just copy and paste this above me, under the bracket."},
-    
-    {"date": "this is the title of my first post",
-     "content": "## my first post in a nice big header\n\nsome **bold** text and a list:\n\n- item one\n- item two"}
+    {"date": "June 8th, 2026",
+     "content": "This is a post! There will possibly be more posts in the future! Exciting, isn't it?"}
 ]

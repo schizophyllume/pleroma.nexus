@@ -1,19 +1,3 @@
-<!-- ====================================================
-   Welcome to the blog template
-   ====================================================
-
-   I've done my best to make it as easily editable
-   as possible.
-
-   Most things like colours and fonts are in easy to
-   edit variables.
-
-   This is just a template! You are free to modify
-   whatever you want here and make it your own, not
-   just the variables, if you would like.
-
-   Have fun!
-   ==================================================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,16 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Machine Wings</title>
 <style>
-  /* ============================================================
-     HTML VALUES
-     EDIT THESE VALUES - all colours and fonts are set here
-     ============================================================
-
-     COLOURS: use a name (e.g. black, white, hotpink) or a
-     hex code (e.g. #ff0000). Pick one here: https://www.color-hex.com
-
-     FONTS: use any font name from https://fonts.google.com
-     ============================================================ */
 
   :root {
     --bg-color:           #000000;   /* page background */
@@ -43,7 +17,7 @@
     --link-hover-bg:      #eeff00;   /* background when hovering a link */
     --link-hover-fg:      #ffffff;   /* text colour when hovering a link */
     --hr-color:           #000000;   /* horizontal rule colour */
-    --separator-color:    #555555;   /* the line shown above each post */
+    --separator-color:    #3d0049;   /* the line shown above each post */
     --error-color:        #ff0000;   /* error messages */
     --btn-back-color:     #a0a0a0;   /* "back to list" button text colour */
     --btn-back-hover-bg:  #000000;   /* "back to list" button hover background */
@@ -257,67 +231,33 @@
 </div>
 
 <script>
-/* ============================================================
-   SCRIPT VALUES
-   EDIT THESE VALUES - everything you need to change is here
-   ============================================================
 
-   COLOURS: use a name (e.g. black, white, hotpink) or a
-   hex code (e.g. #ff0000). Pick one here: https://www.color-hex.com
-   ============================================================ */
+const POSTS_URL = 'https://raw.githubusercontent.com/schizophyllume/pleroma.nexus/refs/heads/main/members/MachinicWings/posts.json';
 
+const PAGE_TITLE = 'Mechanical Wings Blog';
 
-// Your GitLab or GitHub raw URL
-// Format GitLab: https://gitlab.com/YOUR_USERNAME/YOUR_REPO/-/raw/main/posts.json
-// Format GitHub: https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/posts.json
-const POSTS_URL = 'URL GOES HERE';
-
-// Page title (shown in the browser tab)
-const PAGE_TITLE = 'blog';
-
-// The label on the back button shown when reading a post
-const BACK_BUTTON_TEXT = '← back to posts';
+const BACK_BUTTON_TEXT = '← Back';
 
 // How many columns to show in the post list.
 // Use a number for a fixed layout (e.g. 1, 2, 3, 4)
 // or 'auto' to let the page decide based on screen width
-const GRID_COLUMNS = 'auto';
+const GRID_COLUMNS = '1';
 
 // Alignment of the post list.
-// Options: 'left'  'center'  'right'
-const GRID_ALIGN = 'left';
+const GRID_ALIGN = 'center';
 
-/* ============================================================
-   ABOUT SECTION
-   EDIT THESE VALUES - everything you need to change is here
-   ============================================================
-
-   You can have as many or as few about sections as you like.
-   Add or remove blocks between the [ ] to add or remove sections.
-   Set to an empty array to show no about sections: []
-
-   Each section has these fields:
-   heading  - the heading shown above the section (set to '' to hide it)
-   text     - your text, supports markdown and \n line breaks
-   align    - text alignment: 'left'  'center'  'right'
-   layout   - 'single'    one block of text
-              'two-col'   two side-by-side columns
-              'three-col' three side-by-side columns
-              For multi-column layouts, separate each column with ---
-              e.g. 'Left column\n---\nRight column'
-   ============================================================ */
 const ABOUT_SECTIONS = [
   {
     heading: '**About Me**',
     text:    'Waiting for a new world of permeable boundaries and endless impermanence',
-    align:   'left',
+    align:   'center',
     layout:  'single',
   },
   {
     heading: '**WIP**',
     text:    'For the time being, I must learn, grow, and gather myself. I might put up a few small posts and updates here and there, but I\'ve yet to begin unfurling my wings. I will fly, soon enough.',
-    align:   'left',
-    layout:  'two-col',
+    align:   'center',
+    layout:  'single',
   },
   {
     text:    '*Our rigid boundaries*\n\n*The towers that they\'ll build*\n\n*We\'ll all fall upwards, soon enough*',
@@ -326,33 +266,19 @@ const ABOUT_SECTIONS = [
   },
 ];
 
-/* ============================================================
-   CONTENT WARNING FUNCTION
-   EDIT THESE VALUES - everything you need to change is here
-   ============================================================
-   Set to true to show a content warning before the page loads,
-   or false to skip it entirely.
-   ============================================================ */
-const CONTENT_WARNING = true;
+const CONTENT_WARNING = false;
 
-// The heading shown at the top of the warning box
 const CW_TITLE = 'Content warning';
 
-// The warning text - write whatever you need here.
-// You can split it into paragraphs by adding more lines like the ones below.
 const CW_TEXT = [
   'This is the first line of text.',
   'This is the second line of text. If you only want one, delete this one, or feel free to add more if you want more than two.',
 ];
 
-// The URL of the home/index page - only edit this if you want to send users somewhere
-// other than back to the home page, when they hit the return button.
 const CW_HOME_URL = 'index.html';
 
-// The text of the back link shown in the warning (the URL is set by CW_HOME_URL above)
 const CW_HOME_TEXT = 'Leave';
 
-// The label on the button to proceed past the warning
 const CW_BUTTON_TEXT = 'Continue';
 
 
@@ -557,3 +483,5 @@ async function init() {
 
 init();
 </script>
+</body>
+</html>
