@@ -13,7 +13,7 @@
       color: #fff;
     }
 
-    /* ===================== BANNER ===================== */
+    /* banner */
     .banner {
       position: relative;
       width: 100%;
@@ -74,7 +74,7 @@
       font-family: 'Courier New', monospace;
     }
 
-    /* ===================== ABOUT ===================== */
+    /* aboot */
     .about-section {
       padding: 1.5rem 2rem 1.2rem;
       border-bottom: 1px solid #ffffff18;
@@ -89,7 +89,7 @@
       margin: 0 auto;
     }
 
-    /* ===================== MEMBER LIST ===================== */
+    /* member list */
     .member-list-section {
       padding: 1.5rem 2rem 2rem;
     }
@@ -119,7 +119,7 @@
       align-items: center;
     }
 
-    /* base style — members override with style="" on their own <a> tag */
+    /* base style */
     .mname {
       font-size: 0.95rem;
       color: #ffffffaa;
@@ -148,7 +148,7 @@
       user-select: none;
     }
 
-    /* ===================== MYTHOS ===================== */
+    /* mythos section */
     .mythos-section {
       padding: 2rem 2rem;
       border-top: 1px solid #ffffff18;
@@ -178,7 +178,7 @@
       line-height: 1.9;
     }
 
-    /* ===================== JOIN ===================== */
+    /* join section */
     .join-section {
       padding: 2rem 2rem;
       text-align: center;
@@ -213,7 +213,7 @@
 
     .join-link:hover { border-color: #fff; }
 
-    /* ===================== FOOTER ===================== */
+    /* da footer */
     .footer {
       padding: 1.2rem 1.5rem;
       font-size: 0.62rem;
@@ -226,7 +226,7 @@
 </head>
 <body>
 
-  <!-- ===================== BANNER ===================== -->
+  <!-- da banner -->
   <div class="banner">
     <canvas id="fractal"></canvas>
     <div class="banner-overlay"></div>
@@ -237,38 +237,40 @@
     </div>
   </div>
 
-  <!-- ===================== ABOUT ===================== -->
+  <!-- aboot -->
   <div class="about-section">
     <div class="about-text">
-      <!-- group description -->
+      <!-- 1st description -->
     A vestible of liveliness in an internet full of the dead. 
     </div>
   </div>
 
-  <!-- ===================== MEMBER LIST ===================== -->
+  <!-- member display -->
   <div class="member-list-section">
 
     <div class="member-group">
       <div class="group-label">Pleromites</div>
       <div class="group-hint">click a name to find out more</div>
       <div class="group-names">
-        <!-- skizy: customise your style below -->
+        <!-- skizy-->
         <a class="mname" href="/members/skizy/skizy.html" style="color:#00ff00; font-family:'Courier', 'Courier New', monospace;">skizy</a>
         <span class="mname-sep">~</span>
-        <!-- MachinicWings: customise your style below -->
+        <!-- MachinicWings-->
         <a class="mname" href="/members/MachinicWings/MachinicWings.html" style="color:#ff00ff; font-family:'Georgia', serif;">MachinicWings</a>
         <span class="mname-sep">~</span>
-        <!-- Deadborg: customise your style below -->
+        <!-- Deadborg-->
         <a class="mname" href="/members/Deadborg/deadborg.html" style="">Deadborg</a>
         <span class="mname-sep">~</span>
-        <!-- Skim: customise your style below -->
+        <!-- Skim-->
         <a class="mname" href="/members/Skim/skim.html" style="">Skim</a>
+        <!-- Ji Shu-->
+        <a class="mname" href="/members/Skim/skim.html" style="color:#40b589; font-family:'Young', serif;">Wisd0mTales</a>
       </div>
     </div>
 
   </div>
 
-  <!-- ===================== MYTHOS ===================== -->
+  <!-- mythos section -->
   <div class="mythos-section">
     <div class="mythos-title">The Mythos</div>
     <div class="mythos-text">
@@ -280,7 +282,7 @@
     </div>
   </div>
 
-  <!-- ===================== JOIN ===================== -->
+  <!-- join section -->
   <div class="join-section">
     <div class="join-title">Join Us</div>
     <div class="join-text">Are you a fellow internet outsider?</div>
@@ -289,7 +291,7 @@
   <div class="footer">pleroma.nexus &nbsp;|&nbsp; est. 2025 &nbsp;|&nbsp; all content belongs to its authors</div>
 
   <script>
-    // ===================== TITLE ANIMATION =====================
+    // title animation
     const tc = document.getElementById('title-canvas');
     const tx = tc.getContext('2d');
     const TW = tc.width, TH = tc.height;
@@ -347,7 +349,7 @@
 
     drawTitle();
 
-    // ===================== JULIA FRACTAL =====================
+    // fractal! 
     const canvas = document.getElementById('fractal');
     const ctx = canvas.getContext('2d');
     let FW, FH, t = 0;
